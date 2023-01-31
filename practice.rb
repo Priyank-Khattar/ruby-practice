@@ -27,3 +27,37 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+names = ["ben", "brian", "evan", "anthony"]
+name_counter = 0
+
+loop do
+  if (name_counter == names.count)
+    break
+  end
+
+    index = 0
+    target = names[name_counter]
+    coin_received = 0
+    coin_sent = 0
+
+    loop do
+      if index == blockchain.count
+        break
+      end
+      
+      block = blockchain[index]
+      
+      if (block["to_user"]==target)
+        coin_received = coin_received + block["amount"]
+      elsif (block["from_user"]==target)
+        coin_sent = coin_sent + block["amount"]
+      end
+    index = index + 1
+    end
+
+    print target
+    print "'s KelloggCoin balance is "
+    puts coin_received - coin_sent
+  name_counter = name_counter + 1
+end
